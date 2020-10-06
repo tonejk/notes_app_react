@@ -14,10 +14,10 @@ const App = () => {
     }, [notes])
 
     // Toggle note complete (checkbox)
-    const toggleNoteComplete = (id) => {
+    const toggleNoteComplete = (id, complete) => {
         const newNotes = [...notes];
         const note = newNotes.find(note => note.id === id);
-        note.complete = !note.complete;
+        note.complete = !complete;
         SetNotes(newNotes);
     }
 
