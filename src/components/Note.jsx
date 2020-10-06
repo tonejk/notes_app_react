@@ -1,6 +1,7 @@
 import React from 'react';
 
-function Note({ id, name, complete, toggleNote }) {
+// Return note with checkbox and handle checkbox change
+function Note({ id, noteText, complete, toggleNote }) {
 
     const handleNoteClick = () => {
         toggleNote(id);
@@ -9,7 +10,7 @@ function Note({ id, name, complete, toggleNote }) {
     return (
     <div>
         <label>
-            <div>{name}</div>
+            <div>{noteText}</div>
             <input 
                 type="checkbox" 
                 defaultChecked={complete} 
@@ -18,6 +19,6 @@ function Note({ id, name, complete, toggleNote }) {
         </label>
     </div>
     );
-    }
+}
 
 export default Note;

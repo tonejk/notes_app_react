@@ -1,12 +1,16 @@
 import React from 'react';
 import Note from "./Note";
 
-const NoteList = ({ initialNotes, toggleNote }) => {
-
+// Map notes to return list of notes
+const NoteList = ({ notes, toggleNote }) => {
     return (
         <div>
-            {initialNotes.map(note => (
-                <Note key={note.id} toggleNote={toggleNote} {...note} />
+            {notes.map(note => (
+                <Note 
+                    key={note.id} 
+                    toggleNote={toggleNote} 
+                    {...note} 
+                />
             ))}
         </div>
         );

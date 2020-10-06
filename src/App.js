@@ -4,9 +4,16 @@ import { v4 as uuidv4 } from 'uuid';
 import './App.css';
 
 const App = () => {
-    const [notes, SetNotes] = useState([]);
+    const initialState = JSON.parse(window.localStorage.getItem("notes"));
+    const [notes, SetNotes] = useState(initialState || []);
     const noteTextRef = useRef();
 
+    // Save notes to localStorage
+    useEffect(() => {
+        window.localStorage.setItem("notes", JSON.stringify(notes))
+    }, [notes])
+
+    // Toggle note complete (checkbox)
     const toggleNote = (id) => {
         const newNotes = [...notes];
         const note = newNotes.find(note => note.id === id);
@@ -14,6 +21,7 @@ const App = () => {
         SetNotes(newNotes);
     }
 
+    // Add new note
     const handleAddNote = (e) => {
         e.preventDefault();
         const newNote = noteTextRef.current.value;
@@ -21,12 +29,13 @@ const App = () => {
             return null;
         } else {
             SetNotes(prevNotes => {
-                return [...prevNotes, {id: uuidv4(), name: newNote, complete: false}];
+                return [...prevNotes, {id: uuidv4(), noteText: newNote, complete: false}];
             })
         }
         noteTextRef.current.value = null;
     }
 
+    // Clear completed (checked) notes
     const handleClearNotes = (e) => {
         e.preventDefault();
         const newNotes = notes.filter(note => !note.complete);
@@ -41,7 +50,9 @@ const App = () => {
                     <input type="text" ref={noteTextRef}></input>
                     <button onClick={handleAddNote}>Add Note</button>
                     <button onClick={handleClearNotes}>Clear Notes</button>
-                    <NoteList initialNotes={notes} toggleNote={toggleNote}/>
+                    <NoteList 
+                        notes={notes} 
+                        toggleNote={toggleNote}/>
                 </form>
             </header>
         </div>
