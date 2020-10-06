@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Note from "./Note";
 
-const NoteList = ({ initialNotes }) => {
+const NoteList = ({ initialNotes, toggleNote }) => {
 
     return (
         <div>
             {initialNotes.map(note => (
-                <Note key={note.id} {...note} />
+                <Note key={note.id} toggleNote={toggleNote} {...note} />
             ))}
         </div>
         );
