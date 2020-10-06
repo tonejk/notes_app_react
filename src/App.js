@@ -10,11 +10,11 @@ const App = () => {
 
     // Save notes to localStorage
     useEffect(() => {
-        window.localStorage.setItem("notes", JSON.stringify(notes))
+        window.localStorage.setItem("notes", JSON.stringify(notes));
     }, [notes])
 
     // Toggle note complete (checkbox)
-    const toggleNote = (id) => {
+    const toggleNoteComplete = (id) => {
         const newNotes = [...notes];
         const note = newNotes.find(note => note.id === id);
         note.complete = !note.complete;
@@ -52,7 +52,7 @@ const App = () => {
                     <button onClick={handleClearNotes}>Clear Notes</button>
                     <NoteList 
                         notes={notes} 
-                        toggleNote={toggleNote}/>
+                        toggleNoteComplete={toggleNoteComplete}/>
                 </form>
             </header>
         </div>

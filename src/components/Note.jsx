@@ -1,10 +1,10 @@
 import React from 'react';
 
 // Return note with checkbox and handle checkbox change
-function Note({ id, noteText, complete, toggleNote }) {
+function Note({ id, noteText, complete, toggleNoteComplete }) {
 
     const handleNoteClick = () => {
-        toggleNote(id);
+        toggleNoteComplete(id);
     }
 
     return (
