@@ -45,16 +45,23 @@ const App = () => {
     return (
         <div className="App">
             <header className="App-header">
-                <form>
-                    <h3>Notes App</h3>
-                    <input type="text" ref={noteTextRef}></input>
-                    <button onClick={handleAddNote}>Add Note</button>
-                    <button onClick={handleClearNotes}>Clear Notes</button>
-                    <NoteList 
-                        notes={notes} 
-                        toggleNoteComplete={toggleNoteComplete}/>
-                </form>
+                <h3>Notes App</h3>
             </header>
+            <form className="Notes-form">
+                <label>
+                <input type="text" ref={noteTextRef} name="noteText"></input>
+                </label>
+
+                <div>
+                <button onClick={handleAddNote}>Add note</button>
+                <button onClick={handleClearNotes}>Clear notes</button>
+                </div>
+
+                
+                <NoteList 
+                    notes={notes} 
+                    toggleNoteComplete={toggleNoteComplete}/>
+            </form>
         </div>
     );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
+import '../App.css';
 
-// Return note with checkbox and handle checkbox change
 function Note({ id, noteText, complete, toggleNoteComplete }) {
 
     const handleNoteClick = () => {
@@ -8,9 +8,9 @@ function Note({ id, noteText, complete, toggleNoteComplete }) {
     }
 
     return (
-    <div>
-        <label>
-            <div>{noteText}</div>
+    <div className="Note-container">
+        <label className="Note">
+            {noteText}
             <input 
                 type="checkbox" 
                 defaultChecked={complete} 
